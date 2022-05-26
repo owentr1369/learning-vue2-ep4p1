@@ -120,7 +120,10 @@ export default {
         this.playerHealth = 70;
       }
     },
-    giveUp: function () {},
+    giveUp: function () {
+      alert("You gave up! Demon won! New game?");
+      this.gameIsRunning = !this.gameIsRunning;
+    },
   },
 };
 </script>
