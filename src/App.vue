@@ -71,6 +71,9 @@ export default {
     };
   },
   methods: {
+    inputDamage: function (minDamage, maxDamage) {
+      return Math.max(Math.floor(Math.random() * maxDamage) + 1, minDamage);
+    },
     startNewGame: function () {
       this.gameIsRunning = !this.gameIsRunning;
       this.playerHealth = 100;
@@ -78,19 +81,12 @@ export default {
     },
     attack: function () {
       // Player
-      var maxDamage = 12;
-      var minDamage = 5;
-      var damage = Math.max(
-        Math.floor(Math.random() * maxDamage) + 1,
-        minDamage
-      );
-      this.monsterHealth -= damage;
+      this.inputDamage(5, 12);
+      this.monsterHealth -= this.inputDamage(5, 12);
       // Monster
       setTimeout(() => {
-        maxDamage = 10;
-        minDamage = 4;
-        damage = Math.max(Math.floor(Math.random() * maxDamage) + 1, minDamage);
-        this.playerHealth -= damage;
+        this.inputDamage(4, 10);
+        this.playerHealth -= this.inputDamage(4, 10);
         // Check
         if (this.playerHealth <= 0) {
           alert("Demon wins! New game?");
