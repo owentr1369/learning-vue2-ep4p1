@@ -10,7 +10,7 @@
           style="width: 100%"
         />
 
-        <div class="healthbar">
+        <div class="healthbar" style="background-color: gray">
           <div
             class="healthbar text-center"
             style="background-color: red; margin: 0; color: white"
@@ -24,7 +24,7 @@
         <h1 class="text-center">Demon</h1>
         <img src="./assets/akaza.png" class="img" alt="" style="width: 100%" />
 
-        <div class="healthbar">
+        <div class="healthbar" style="background-color: gray">
           <div
             class="healthbar text-center"
             style="background-color: red; margin: 0; color: white"
@@ -42,10 +42,12 @@
     </section>
     <section class="row controls" v-else>
       <div class="small-12 collumns">
-        <button id="attack">ATTACK</button>
-        <button id="special-attack">SPECIAL ATTACK</button>
-        <button id="heal">HEAL</button>
-        <button id="give-up">GIVE UP</button>
+        <button id="attack" @click="attack">ATTACK</button>
+        <button id="special-attack" @click="specialAttack">
+          SPECIAL ATTACK
+        </button>
+        <button id="heal" @click="heal">HEAL</button>
+        <button id="give-up" @click="giveUp">GIVE UP</button>
       </div>
     </section>
     <section class="row log">
@@ -73,8 +75,33 @@ export default {
       this.gameIsRunning = !this.gameIsRunning;
       this.playerHealth = 100;
       this.monsterHealth = 100;
-      return;
     },
+    attack: function () {
+      // Monster
+      var maxDamage = 10;
+      var minDamage = 4;
+      var damage = Math.max(
+        Math.floor(Math.random() * maxDamage) + 1,
+        minDamage
+      );
+      this.playerHealth -= damage;
+      if (this.playerHealth <= 0) {
+        alert("Demon wins");
+        this.gameIsRunning = !this.gameIsRunning;
+      }
+      // Player
+      if (this.monsterHealth <= 0) {
+        alert("You win");
+        this.gameIsRunning = !this.gameIsRunning;
+      }
+      maxDamage = 12;
+      minDamage = 5;
+      damage = Math.max(Math.floor(Math.random() * maxDamage) + 1, minDamage);
+      this.monsterHealth -= damage;
+    },
+    specialAttack: function () {},
+    heal: function () {},
+    giveUp: function () {},
   },
 };
 </script>
@@ -100,6 +127,7 @@ export default {
 }
 .text-center {
   text-align: center;
+  vertical-align: middle;
 }
 .healthbar {
   width: 80%;
@@ -107,6 +135,9 @@ export default {
   background-color: red;
   margin: auto;
   transition: width 500ms;
+}
+.healthbar .text-center {
+  line-height: 40px;
 }
 .controls,
 .log {
