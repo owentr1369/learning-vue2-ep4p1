@@ -68,6 +68,7 @@ export default {
       playerHealth: 100,
       monsterHealth: 100,
       gameIsRunning: false,
+      turns: [],
     };
   },
   methods: {
@@ -81,10 +82,21 @@ export default {
     },
     attack: function () {
       // Player
-      this.monsterHealth -= this.inputDamage(5, 12);
+      var damage = this.inputDamage(5, 12);
+      this.monsterHealth -= damage;
+      this.turns.unshift({
+        isPlayer: true,
+        textLog: "Player hits monster for" + damage,
+      });
       // Monster
       setTimeout(() => {
-        this.playerHealth -= this.inputDamage(4, 10);
+        damage = this.inputDamage(4, 10);
+        this.playerHealth -= damage;
+        this.turns.unshift({
+          isPlayer: false,
+          textLog: "Monster hits player for" + damage,
+        });
+
         // Check
         if (this.playerHealth <= 0) {
           alert("Demon wins! New game?");
@@ -97,10 +109,21 @@ export default {
     },
     specialAttack: function () {
       // Player
-      this.monsterHealth -= this.inputDamage(10, 20);
+      var damage = this.inputDamage(10, 20);
+      this.monsterHealth -= damage;
+      this.turns.unshift({
+        isPlayer: true,
+        textLog: "Player hits monster for" + damage,
+      });
       // Monster
       setTimeout(() => {
-        this.playerHealth -= this.inputDamage(8, 16);
+        damage = this.inputDamage(8, 18);
+        this.playerHealth -= damage;
+        this.turns.unshift({
+          isPlayer: false,
+          textLog: "Monster hits player for" + damage,
+        });
+
         // Check
         if (this.playerHealth <= 0) {
           alert("Demon wins! New game?");
