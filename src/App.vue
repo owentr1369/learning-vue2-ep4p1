@@ -77,27 +77,29 @@ export default {
       this.monsterHealth = 100;
     },
     attack: function () {
-      // Monster
-      var maxDamage = 10;
-      var minDamage = 4;
+      // Player
+      var maxDamage = 12;
+      var minDamage = 5;
       var damage = Math.max(
         Math.floor(Math.random() * maxDamage) + 1,
         minDamage
       );
-      this.playerHealth -= damage;
-      if (this.playerHealth <= 0) {
-        alert("Demon wins");
-        this.gameIsRunning = !this.gameIsRunning;
-      }
-      // Player
-      if (this.monsterHealth <= 0) {
-        alert("You win");
-        this.gameIsRunning = !this.gameIsRunning;
-      }
-      maxDamage = 12;
-      minDamage = 5;
-      damage = Math.max(Math.floor(Math.random() * maxDamage) + 1, minDamage);
       this.monsterHealth -= damage;
+      // Monster
+      setTimeout(() => {
+        maxDamage = 10;
+        minDamage = 4;
+        damage = Math.max(Math.floor(Math.random() * maxDamage) + 1, minDamage);
+        this.playerHealth -= damage;
+        // Check
+        if (this.playerHealth <= 0) {
+          alert("Demon wins! New game?");
+          this.gameIsRunning = !this.gameIsRunning;
+        } else if (this.monsterHealth <= 0) {
+          alert("You wins! New game?");
+          this.gameIsRunning = !this.gameIsRunning;
+        } else return false;
+      }, 500);
     },
     specialAttack: function () {},
     heal: function () {},
