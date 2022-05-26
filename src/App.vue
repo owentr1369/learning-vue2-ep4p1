@@ -111,7 +111,15 @@ export default {
         } else return false;
       }, 500);
     },
-    heal: function () {},
+    heal: function () {
+      if (this.playerHealth > 70) {
+        return false;
+      } else if (this.playerHealth <= 60) {
+        this.playerHealth += 10;
+      } else {
+        this.playerHealth = 70;
+      }
+    },
     giveUp: function () {},
   },
 };
