@@ -81,11 +81,9 @@ export default {
     },
     attack: function () {
       // Player
-      this.inputDamage(5, 12);
       this.monsterHealth -= this.inputDamage(5, 12);
       // Monster
       setTimeout(() => {
-        this.inputDamage(4, 10);
         this.playerHealth -= this.inputDamage(4, 10);
         // Check
         if (this.playerHealth <= 0) {
@@ -97,7 +95,22 @@ export default {
         } else return false;
       }, 500);
     },
-    specialAttack: function () {},
+    specialAttack: function () {
+      // Player
+      this.monsterHealth -= this.inputDamage(10, 20);
+      // Monster
+      setTimeout(() => {
+        this.playerHealth -= this.inputDamage(8, 16);
+        // Check
+        if (this.playerHealth <= 0) {
+          alert("Demon wins! New game?");
+          this.gameIsRunning = !this.gameIsRunning;
+        } else if (this.monsterHealth <= 0) {
+          alert("You wins! New game?");
+          this.gameIsRunning = !this.gameIsRunning;
+        } else return false;
+      }, 500);
+    },
     heal: function () {},
     giveUp: function () {},
   },
