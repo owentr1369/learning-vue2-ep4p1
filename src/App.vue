@@ -3,7 +3,12 @@
     <section class="row">
       <div class="small-6 collumns">
         <h1 class="text-center">You</h1>
-        <img src="./assets/rengoku.png" alt="" style="width: 100%" />
+        <img
+          src="./assets/rengoku.png"
+          class="img"
+          alt=""
+          style="width: 100%"
+        />
 
         <div class="healthbar">
           <div
@@ -14,7 +19,7 @@
       </div>
       <div class="small-6 collumns">
         <h1 class="text-center">Demon</h1>
-        <img src="./assets/akaza.png" alt="" style="width: 100%" />
+        <img src="./assets/akaza.png" class="img" alt="" style="width: 100%" />
 
         <div class="healthbar">
           <div
@@ -60,6 +65,21 @@ export default {
 <style>
 * {
   box-sizing: border-box;
+}
+.row {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  align-items: center;
+}
+.img {
+  flex: 0 0 50%;
+  max-width: 340px;
+  object-fit: cover;
+  min-height: 486px;
+}
+.small-6 .collumns {
+  min-height: 600px;
 }
 .text-center {
   text-align: center;
