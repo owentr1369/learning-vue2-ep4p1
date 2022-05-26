@@ -14,7 +14,10 @@
           <div
             class="healthbar text-center"
             style="background-color: red; margin: 0; color: white"
-          ></div>
+            :style="{ width: playerHealth + '%' }"
+          >
+            {{ playerHealth }}
+          </div>
         </div>
       </div>
       <div class="small-6 collumns">
@@ -25,7 +28,10 @@
           <div
             class="healthbar text-center"
             style="background-color: red; margin: 0; color: white"
-          ></div>
+            :style="{ width: monsterHealth + '%' }"
+          >
+            {{ monsterHealth }}
+          </div>
         </div>
       </div>
     </section>
@@ -56,7 +62,11 @@
 export default {
   name: "App",
   data() {
-    return {};
+    return {
+      playerHealth: 100,
+      monsterHealth: 100,
+      gameIsRunning: false,
+    };
   },
   methods: {},
 };
