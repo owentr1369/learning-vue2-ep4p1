@@ -35,12 +35,14 @@
         </div>
       </div>
     </section>
-    <section class="row controls">
+    <section class="row controls" v-if="!gameIsRunning">
       <div class="small-12 collumns">
-        <button id="start-game">START NEW GAME</button>
+        <button id="start-game" @click="gameIsRunning = !gameIsRunning">
+          START NEW GAME
+        </button>
       </div>
     </section>
-    <section class="row controls">
+    <section class="row controls" v-else>
       <div class="small-12 collumns">
         <button id="attack">ATTACK</button>
         <button id="special-attack">SPECIAL ATTACK</button>
