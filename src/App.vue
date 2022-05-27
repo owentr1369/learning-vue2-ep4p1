@@ -53,7 +53,14 @@
     <section class="row log">
       <div class="small-12 collumns">
         <ul>
-          <li v-for="turn in turns" :key="turn">
+          <li
+            v-for="turn in turns"
+            :key="turn"
+            :class="{
+              'player-turn': turn.isPlayer,
+              'monster-turn': !turn.isPlayer,
+            }"
+          >
             {{ turn.textLog }}
           </li>
         </ul>
@@ -217,6 +224,10 @@ export default {
 .log ul .player-turn {
   color: blue;
   background-color: #e4e8ff;
+}
+.log ul .monster-turn {
+  color: red;
+  background-color: #ffc0c1;
 }
 button {
   font-size: 20px;
