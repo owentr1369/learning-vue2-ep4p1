@@ -81,6 +81,7 @@ export default {
       this.gameIsRunning = !this.gameIsRunning;
       this.playerHealth = 100;
       this.monsterHealth = 100;
+      this.turns = [];
     },
     attack: function () {
       // Player
@@ -103,9 +104,11 @@ export default {
         if (this.playerHealth <= 0) {
           alert("Demon wins! New game?");
           this.gameIsRunning = !this.gameIsRunning;
+          this.turns = [];
         } else if (this.monsterHealth <= 0) {
           alert("You wins! New game?");
           this.gameIsRunning = !this.gameIsRunning;
+          this.turns = [];
         } else return false;
       }, 500);
     },
@@ -130,9 +133,11 @@ export default {
         if (this.playerHealth <= 0) {
           alert("Demon wins! New game?");
           this.gameIsRunning = !this.gameIsRunning;
+          this.turns = [];
         } else if (this.monsterHealth <= 0) {
           alert("You wins! New game?");
           this.gameIsRunning = !this.gameIsRunning;
+          this.turns = [];
         } else return false;
       }, 500);
     },
@@ -147,7 +152,10 @@ export default {
     },
     giveUp: function () {
       alert("You gave up! Demon won! New game?");
+      this.playerHealth = 100;
+      this.monsterHealth = 100;
       this.gameIsRunning = !this.gameIsRunning;
+      this.turns = [];
     },
   },
 };
