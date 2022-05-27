@@ -53,7 +53,9 @@
     <section class="row log">
       <div class="small-12 collumns">
         <ul>
-          <li></li>
+          <li v-for="turn in turns" :key="turn">
+            {{ turn.textLog }}
+          </li>
         </ul>
       </div>
     </section>
@@ -86,7 +88,7 @@ export default {
       this.monsterHealth -= damage;
       this.turns.unshift({
         isPlayer: true,
-        textLog: "Player hits monster for" + damage,
+        textLog: "Player hits monster for " + damage,
       });
       // Monster
       setTimeout(() => {
@@ -94,7 +96,7 @@ export default {
         this.playerHealth -= damage;
         this.turns.unshift({
           isPlayer: false,
-          textLog: "Monster hits player for" + damage,
+          textLog: "Monster hits player for " + damage,
         });
 
         // Check
@@ -113,7 +115,7 @@ export default {
       this.monsterHealth -= damage;
       this.turns.unshift({
         isPlayer: true,
-        textLog: "Player hits monster for" + damage,
+        textLog: "Player hits monster for " + damage,
       });
       // Monster
       setTimeout(() => {
@@ -121,7 +123,7 @@ export default {
         this.playerHealth -= damage;
         this.turns.unshift({
           isPlayer: false,
-          textLog: "Monster hits player for" + damage,
+          textLog: "Monster hits player for " + damage,
         });
 
         // Check
